@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export default function Flashcards({ setRemoverAcao, removerAcao, quase, erro, certo, setIcon, setColor, icon, color, hiddenAnswer, setHiddenAnswer, seta, deck, setDeck, hiddenQuestion, setHiddenQuestion }) {
+export default function Flashcards({ concluidos,setConcluidos,setRemoverAcao, removerAcao, quase, erro, certo, setIcon, setColor, icon, color, hiddenAnswer, setHiddenAnswer, seta, deck, setDeck, hiddenQuestion, setHiddenQuestion }) {
 
     function naoLembrei(index, card) {
         if (icon.length === 0) {
             let listaIcon = [];
             let listaColor = [];
             for (let i = 0; i < deck.length; i++) {
-                listaIcon.push("")
+                listaIcon.push("");
                 listaColor.push("#333333");
             }
             listaColor[index] = "#FF3030";
@@ -17,7 +17,8 @@ export default function Flashcards({ setRemoverAcao, removerAcao, quase, erro, c
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
             setHiddenAnswer(listaAnswer);
-            setRemoverAcao([...removerAcao, index])
+            setRemoverAcao([...removerAcao, index]);
+            setConcluidos(concluidos+1);
         } else {
             let mudarCor = [...color];
             mudarCor[index] = "#FF3030";
@@ -28,7 +29,8 @@ export default function Flashcards({ setRemoverAcao, removerAcao, quase, erro, c
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
             setHiddenAnswer(listaAnswer);
-            setRemoverAcao([...removerAcao, index])
+            setRemoverAcao([...removerAcao, index]);
+            setConcluidos(concluidos+1);
         }
     }
 
@@ -37,7 +39,7 @@ export default function Flashcards({ setRemoverAcao, removerAcao, quase, erro, c
             let listaIcon = [];
             let listaColor = [];
             for (let i = 0; i < deck.length; i++) {
-                listaIcon.push("")
+                listaIcon.push("");
                 listaColor.push("#333333");
             }
             listaColor[index] = "#FF922E";
@@ -47,7 +49,8 @@ export default function Flashcards({ setRemoverAcao, removerAcao, quase, erro, c
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
             setHiddenAnswer(listaAnswer);
-            setRemoverAcao([...removerAcao, index])
+            setRemoverAcao([...removerAcao, index]);
+            setConcluidos(concluidos+1);
         } else {
             let mudarCor = [...color];
             mudarCor[index] = "#FF922E";
@@ -58,7 +61,8 @@ export default function Flashcards({ setRemoverAcao, removerAcao, quase, erro, c
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
             setHiddenAnswer(listaAnswer);
-            setRemoverAcao([...removerAcao, index])
+            setRemoverAcao([...removerAcao, index]);
+            setConcluidos(concluidos+1);
         }
     }
 
@@ -67,7 +71,7 @@ export default function Flashcards({ setRemoverAcao, removerAcao, quase, erro, c
             let listaIcon = [];
             let listaColor = [];
             for (let i = 0; i < deck.length; i++) {
-                listaIcon.push("")
+                listaIcon.push("");
                 listaColor.push("#333333");
             }
             listaColor[index] = "#2FBE34";
@@ -77,7 +81,8 @@ export default function Flashcards({ setRemoverAcao, removerAcao, quase, erro, c
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
             setHiddenAnswer(listaAnswer);
-            setRemoverAcao([...removerAcao, index])
+            setRemoverAcao([...removerAcao, index]);
+            setConcluidos(concluidos+1);
         } else {
             let mudarCor = [...color];
             mudarCor[index] = "#2FBE34";
@@ -88,12 +93,13 @@ export default function Flashcards({ setRemoverAcao, removerAcao, quase, erro, c
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
             setHiddenAnswer(listaAnswer);
-            setRemoverAcao([...removerAcao, index])
+            setRemoverAcao([...removerAcao, index]);
+            setConcluidos(concluidos+1);
         }
     }
 
     function mostrarPergunta(card) {
-        const listaQuestion = [...hiddenQuestion, card.question]
+        const listaQuestion = [...hiddenQuestion, card.question];
         setHiddenQuestion(listaQuestion);
     }
 

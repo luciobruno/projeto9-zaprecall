@@ -22,7 +22,7 @@ export default function App() {
   return (
     <>
       <Header logo={logo}></Header> 
-      <Flashcards removerAcao={removerAcao} setRemoverAcao={setRemoverAcao} certo={certo} erro={erro} quase={quase} color={color} setColor={setColor} icon={icon} setIcon={setIcon} hiddenAnswer={hiddenAnswer} setHiddenAnswer={setHiddenAnswer} seta={seta}  hiddenQuestion={hiddenQuestion} setHiddenQuestion={setHiddenQuestion} setConcluidos={setConcluidos} deck={deck} setDeck={setDeck}></Flashcards>
+      <Flashcards concluidos={concluidos} removerAcao={removerAcao} setRemoverAcao={setRemoverAcao} certo={certo} erro={erro} quase={quase} color={color} setColor={setColor} icon={icon} setIcon={setIcon} hiddenAnswer={hiddenAnswer} setHiddenAnswer={setHiddenAnswer} seta={seta}  hiddenQuestion={hiddenQuestion} setHiddenQuestion={setHiddenQuestion} setConcluidos={setConcluidos} deck={deck} setDeck={setDeck}></Flashcards>
       <Footer concluidos={concluidos} deck={deck}></Footer>
     </>
   );
