@@ -1,8 +1,9 @@
 import styled from "styled-components"; 
 
-export default function Footer() {
+export default function Footer({deck,concluidos}) {
+
     return (
-        <ContainerFooter>0/4 CONCLUÍDOS</ContainerFooter>
+        <ContainerFooter>{concluidos}/{deck.length} CONCLUÍDOS</ContainerFooter>
     );
 }
 
