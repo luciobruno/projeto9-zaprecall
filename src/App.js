@@ -18,11 +18,12 @@ export default function App() {
   const [color, setColor] = React.useState([]);
   const [icon, setIcon] = React.useState([]);
   const [removerAcao,setRemoverAcao] = React.useState([]);
+  const [dataTest,setDataTest] = React.useState([]);
 
   return (
     <>
       <Header logo={logo}></Header> 
-      <Flashcards concluidos={concluidos} removerAcao={removerAcao} setRemoverAcao={setRemoverAcao} certo={certo} erro={erro} quase={quase} color={color} setColor={setColor} icon={icon} setIcon={setIcon} hiddenAnswer={hiddenAnswer} setHiddenAnswer={setHiddenAnswer} seta={seta}  hiddenQuestion={hiddenQuestion} setHiddenQuestion={setHiddenQuestion} setConcluidos={setConcluidos} deck={deck} setDeck={setDeck}></Flashcards>
+      <Flashcards dataTest={dataTest} setDataTest={setDataTest} concluidos={concluidos} removerAcao={removerAcao} setRemoverAcao={setRemoverAcao} certo={certo} erro={erro} quase={quase} color={color} setColor={setColor} icon={icon} setIcon={setIcon} hiddenAnswer={hiddenAnswer} setHiddenAnswer={setHiddenAnswer} seta={seta}  hiddenQuestion={hiddenQuestion} setHiddenQuestion={setHiddenQuestion} setConcluidos={setConcluidos} deck={deck} setDeck={setDeck}></Flashcards>
       <Footer concluidos={concluidos} deck={deck}></Footer>
     </>
   );

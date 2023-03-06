@@ -1,19 +1,23 @@
 import styled from "styled-components";
 
-export default function Flashcards({ concluidos,setConcluidos,setRemoverAcao, removerAcao, quase, erro, certo, setIcon, setColor, icon, color, hiddenAnswer, setHiddenAnswer, seta, deck, setDeck, hiddenQuestion, setHiddenQuestion }) {
+export default function Flashcards({ dataTest,setDataTest,concluidos,setConcluidos,setRemoverAcao, removerAcao, quase, erro, certo, setIcon, setColor, icon, color, hiddenAnswer, setHiddenAnswer, seta, deck, setDeck, hiddenQuestion, setHiddenQuestion }) {
 
     function naoLembrei(index, card) {
         if (icon.length === 0) {
             let listaIcon = [];
             let listaColor = [];
+            let listaDataTest = [];
             for (let i = 0; i < deck.length; i++) {
                 listaIcon.push("");
                 listaColor.push("#333333");
+                listaDataTest.push("");
             }
             listaColor[index] = "#FF3030";
             setColor(listaColor);
             listaIcon[index] = erro;
             setIcon(listaIcon);
+            listaDataTest[index] = "no-icon";
+            setDataTest(listaDataTest);
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
             setHiddenAnswer(listaAnswer);
@@ -26,6 +30,9 @@ export default function Flashcards({ concluidos,setConcluidos,setRemoverAcao, re
             let listaIcon = [...icon];
             listaIcon[index] = erro;
             setIcon(listaIcon);
+            let listaDataTest = [...dataTest];
+            listaDataTest[index] = "no-icon";
+            setDataTest(listaDataTest)
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
             setHiddenAnswer(listaAnswer);
@@ -38,14 +45,18 @@ export default function Flashcards({ concluidos,setConcluidos,setRemoverAcao, re
         if (icon.length === 0) {
             let listaIcon = [];
             let listaColor = [];
+            let listaDataTest = [];
             for (let i = 0; i < deck.length; i++) {
                 listaIcon.push("");
                 listaColor.push("#333333");
+                listaDataTest.push("");
             }
             listaColor[index] = "#FF922E";
             setColor(listaColor);
             listaIcon[index] = quase;
             setIcon(listaIcon);
+            listaDataTest[index] = "partial-icon";
+            setDataTest(listaDataTest);
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
             setHiddenAnswer(listaAnswer);
@@ -58,6 +69,9 @@ export default function Flashcards({ concluidos,setConcluidos,setRemoverAcao, re
             let listaIcon = [...icon];
             listaIcon[index] = quase;
             setIcon(listaIcon);
+            let listaDataTest = [...dataTest];
+            listaDataTest[index] = "partial-icon";
+            setDataTest(listaDataTest)
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
             setHiddenAnswer(listaAnswer);
@@ -70,14 +84,18 @@ export default function Flashcards({ concluidos,setConcluidos,setRemoverAcao, re
         if (icon.length === 0) {
             let listaIcon = [];
             let listaColor = [];
+            let listaDataTest = [];
             for (let i = 0; i < deck.length; i++) {
                 listaIcon.push("");
                 listaColor.push("#333333");
+                listaDataTest.push("");
             }
             listaColor[index] = "#2FBE34";
             setColor(listaColor);
             listaIcon[index] = certo;
             setIcon(listaIcon);
+            listaDataTest[index] = "zap-icon";
+            setDataTest(listaDataTest);
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
             setHiddenAnswer(listaAnswer);
@@ -90,6 +108,9 @@ export default function Flashcards({ concluidos,setConcluidos,setRemoverAcao, re
             let listaIcon = [...icon];
             listaIcon[index] = certo;
             setIcon(listaIcon);
+            let listaDataTest = [...dataTest];
+            listaDataTest[index] = "zap-icon";
+            setDataTest(listaDataTest)
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
             setHiddenAnswer(listaAnswer);
@@ -116,20 +137,20 @@ export default function Flashcards({ concluidos,setConcluidos,setRemoverAcao, re
             <>
                 <ContainerFlashcard removerAcao={removerAcao} icon={icon} index={index} hiddenAnswer={hiddenAnswer} cardAnswer={card.answer} cardQuestion={card.question} hiddenQuestion={hiddenQuestion}>
                     <TextFlashcard icon={icon} index={index} color={color} cardAnswer={card.answer} hiddenAnswer={hiddenAnswer} cardQuestion={card.question} hiddenQuestion={hiddenQuestion}>
-                        Pergunta {index + 1}
-                        <img src={(icon.length === 0) ? "" : icon[index]} alt={icon[index]}></img>
+                        <p data-test="flashcard-text">Pergunta {index + 1}</p>
+                        <img data-test={dataTest[index]} src={(icon.length === 0) ? "" : icon[index]} alt={icon[index]}></img>
                     </TextFlashcard>
                     <TextFlashcardQuestion cardQuestion={card.question} hiddenQuestion={hiddenQuestion}>
-                        <div>{card.question}</div>
-                        <img onClick={() => mostrarResposta(card)} src={seta} alt={seta}></img>
+                        <div data-test="flashcard-text">{card.question}</div>
+                        <img data-test="turn-btn" onClick={() => mostrarResposta(card)} src={seta} alt={seta}></img>
                     </TextFlashcardQuestion>
                     <TextFlashCardAnswer cardAnswer={card.answer} hiddenAnswer={hiddenAnswer}>
-                        <div>{card.answer}</div>
-                        <button onClick={() => naoLembrei(index, card)}>Não lembrei</button>
-                        <button onClick={() => quaseNaoLembrei(index, card)}>Quase não lembrei</button>
-                        <button onClick={() => zap(index, card)}>Zap!</button>
+                        <div data-test="flashcard-text">{card.answer}</div>
+                        <button data-test="no-btn" onClick={() => naoLembrei(index, card)}>Não lembrei</button>
+                        <button data-test="partial-btn" onClick={() => quaseNaoLembrei(index, card)}>Quase não lembrei</button>
+                        <button data-test="zap-btn" onClick={() => zap(index, card)}>Zap!</button>
                     </TextFlashCardAnswer>
-                    <ion-icon onClick={() => mostrarPergunta(card)} name="play-outline"></ion-icon>
+                    <ion-icon data-test="play-btn" onClick={() => mostrarPergunta(card)} name="play-outline"></ion-icon>
                 </ContainerFlashcard>
             </>
         );
@@ -137,7 +158,7 @@ export default function Flashcards({ concluidos,setConcluidos,setRemoverAcao, re
 
     return (
         <ContainerFlashcards>
-            {deck.map((card, index) => <Flashcard key={index} card={card} index={index} />)}
+            {deck.map((card, index) => <Flashcard data-test="flashcard" key={index} card={card} index={index} />)}
         </ContainerFlashcards>
     );
 }
