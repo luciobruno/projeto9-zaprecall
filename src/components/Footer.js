@@ -1,9 +1,9 @@
 import styled from "styled-components"; 
 
-export default function Footer({deck,concluidos}) {
+export default function Footer({deck,concluidos,outrasTelas}) {
 
     return (
-        <ContainerFooter data-test="footer">{concluidos}/{deck.length} CONCLUÍDOS</ContainerFooter>
+        <ContainerFooter data-test="footer" outrasTelas={outrasTelas}>{concluidos}/{deck.length} CONCLUÍDOS</ContainerFooter>
     );
 }
 
@@ -13,7 +13,7 @@ const ContainerFooter = styled.div`
     background-color: #FFFFFF;
     position: fixed;
     bottom: 0px;
-    display: flex;
+    display: ${props => props.outrasTelas};
     justify-content: center;
     align-items: center;
     font-family: 'Recursive', sans-serif;

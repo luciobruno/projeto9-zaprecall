@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Flashcards({ dataTest,setDataTest,concluidos,setConcluidos,setRemoverAcao, removerAcao, quase, erro, certo, setIcon, setColor, icon, color, hiddenAnswer, setHiddenAnswer, seta, deck, setDeck, hiddenQuestion, setHiddenQuestion }) {
+export default function Flashcards({ outrasTelas,dataTest,setDataTest,concluidos,setConcluidos,setRemoverAcao, removerAcao, quase, erro, certo, setIcon, setColor, icon, color, hiddenAnswer, setHiddenAnswer, seta, deck, setDeck, hiddenQuestion, setHiddenQuestion }) {
 
     function naoLembrei(index, card) {
         if (icon.length === 0) {
@@ -157,14 +157,14 @@ export default function Flashcards({ dataTest,setDataTest,concluidos,setConcluid
     }
 
     return (
-        <ContainerFlashcards>
+        <ContainerFlashcards outrasTelas={outrasTelas}>
             {deck.map((card, index) => <Flashcard key={index} card={card} index={index} />)}
         </ContainerFlashcards>
     );
 }
 
 const ContainerFlashcards = styled.div`
-    display: flex;
+    display: ${props => props.outrasTelas};
     justify-content: center;
     flex-wrap: wrap;
     & div:last-child{

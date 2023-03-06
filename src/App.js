@@ -8,6 +8,7 @@ import seta from "./assets/seta_virar.png";
 import certo from "./assets/icone_certo.png";
 import erro from "./assets/icone_erro.png";
 import quase from "./assets/icone_quase.png";
+import TelaInicial from "./components/TelaInicial";
 
 export default function App() {
 
@@ -19,12 +20,15 @@ export default function App() {
   const [icon, setIcon] = React.useState([]);
   const [removerAcao,setRemoverAcao] = React.useState([]);
   const [dataTest,setDataTest] = React.useState([]);
+  const [tela,setTela] = React.useState("flex");
+  const [outrasTelas,setOutrasTelas] = React.useState("none");
 
   return (
     <>
-      <Header logo={logo}></Header> 
-      <Flashcards dataTest={dataTest} setDataTest={setDataTest} concluidos={concluidos} removerAcao={removerAcao} setRemoverAcao={setRemoverAcao} certo={certo} erro={erro} quase={quase} color={color} setColor={setColor} icon={icon} setIcon={setIcon} hiddenAnswer={hiddenAnswer} setHiddenAnswer={setHiddenAnswer} seta={seta}  hiddenQuestion={hiddenQuestion} setHiddenQuestion={setHiddenQuestion} setConcluidos={setConcluidos} deck={deck} setDeck={setDeck}></Flashcards>
-      <Footer concluidos={concluidos} deck={deck}></Footer>
+      <TelaInicial tela={tela} setTela={setTela} setOutrasTelas={setOutrasTelas} logo={logo}></TelaInicial>
+      <Header outrasTelas={outrasTelas} logo={logo}></Header> 
+      <Flashcards outrasTelas={outrasTelas} dataTest={dataTest} setDataTest={setDataTest} concluidos={concluidos} removerAcao={removerAcao} setRemoverAcao={setRemoverAcao} certo={certo} erro={erro} quase={quase} color={color} setColor={setColor} icon={icon} setIcon={setIcon} hiddenAnswer={hiddenAnswer} setHiddenAnswer={setHiddenAnswer} seta={seta}  hiddenQuestion={hiddenQuestion} setHiddenQuestion={setHiddenQuestion} setConcluidos={setConcluidos} deck={deck} setDeck={setDeck}></Flashcards>
+      <Footer outrasTelas={outrasTelas} concluidos={concluidos} deck={deck}></Footer>
     </>
   );
 }

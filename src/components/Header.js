@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export default function Header({ logo }) {
+export default function Header({ logo,outrasTelas }) {
     return (
-        <ContainerHeader>
-            <img src={logo} alt={logo}></img>
+        <ContainerHeader outrasTelas={outrasTelas}>
+            <img src={logo} alt="logo"></img>
             <div>ZapRecall</div>
         </ContainerHeader>
     );
@@ -11,7 +11,7 @@ export default function Header({ logo }) {
 
 const ContainerHeader = styled.div`
     margin-top: 42px;
-    display: flex;
+    display: ${props => props.outrasTelas};
     justify-content: center;
     margin-bottom: 51px;
     & img {
