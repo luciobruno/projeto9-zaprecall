@@ -135,7 +135,7 @@ export default function Flashcards({ dataTest,setDataTest,concluidos,setConcluid
     function Flashcard({ card, index }) {
         return (
             <>
-                <ContainerFlashcard removerAcao={removerAcao} icon={icon} index={index} hiddenAnswer={hiddenAnswer} cardAnswer={card.answer} cardQuestion={card.question} hiddenQuestion={hiddenQuestion}>
+                <ContainerFlashcard data-test="flashcard" removerAcao={removerAcao} icon={icon} index={index} hiddenAnswer={hiddenAnswer} cardAnswer={card.answer} cardQuestion={card.question} hiddenQuestion={hiddenQuestion}>
                     <TextFlashcard icon={icon} index={index} color={color} cardAnswer={card.answer} hiddenAnswer={hiddenAnswer} cardQuestion={card.question} hiddenQuestion={hiddenQuestion}>
                         <p data-test="flashcard-text">Pergunta {index + 1}</p>
                         <img data-test={dataTest[index]} src={(icon.length === 0) ? "" : icon[index]} alt={icon[index]}></img>
@@ -158,7 +158,7 @@ export default function Flashcards({ dataTest,setDataTest,concluidos,setConcluid
 
     return (
         <ContainerFlashcards>
-            {deck.map((card, index) => <Flashcard data-test="flashcard" key={index} card={card} index={index} />)}
+            {deck.map((card, index) => <Flashcard key={index} card={card} index={index} />)}
         </ContainerFlashcards>
     );
 }
