@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Flashcards({ outrasTelas,dataTest,setDataTest,concluidos,setConcluidos,setRemoverAcao, removerAcao, quase, erro, certo, setIcon, setColor, icon, color, hiddenAnswer, setHiddenAnswer, seta, deck, setDeck, hiddenQuestion, setHiddenQuestion }) {
+export default function Flashcards({ seletorResposta,setSeletorResposta,respostas,setRespostas,outrasTelas,dataTest,setDataTest,concluidos,setConcluidos,setRemoverAcao, removerAcao, quase, erro, certo, setIcon, setColor, icon, color, hiddenAnswer, setHiddenAnswer, seta, deck, setDeck, hiddenQuestion, setHiddenQuestion }) {
 
     function naoLembrei(index, card) {
         if (icon.length === 0) {
@@ -15,8 +15,10 @@ export default function Flashcards({ outrasTelas,dataTest,setDataTest,concluidos
             listaColor[index] = "#FF3030";
             setColor(listaColor);
             listaIcon[index] = erro;
+            setRespostas([...respostas,erro]);
             setIcon(listaIcon);
             listaDataTest[index] = "no-icon";
+            setSeletorResposta([...seletorResposta,"no-icon"])
             setDataTest(listaDataTest);
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
@@ -29,9 +31,11 @@ export default function Flashcards({ outrasTelas,dataTest,setDataTest,concluidos
             setColor(mudarCor);
             let listaIcon = [...icon];
             listaIcon[index] = erro;
+            setRespostas([...respostas,erro]);
             setIcon(listaIcon);
             let listaDataTest = [...dataTest];
             listaDataTest[index] = "no-icon";
+            setSeletorResposta([...seletorResposta,"no-icon"])
             setDataTest(listaDataTest)
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
@@ -57,6 +61,8 @@ export default function Flashcards({ outrasTelas,dataTest,setDataTest,concluidos
             setIcon(listaIcon);
             listaDataTest[index] = "partial-icon";
             setDataTest(listaDataTest);
+            setRespostas([...respostas,quase]);
+            setSeletorResposta([...seletorResposta,"partial-icon"])
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
             setHiddenAnswer(listaAnswer);
@@ -72,6 +78,8 @@ export default function Flashcards({ outrasTelas,dataTest,setDataTest,concluidos
             let listaDataTest = [...dataTest];
             listaDataTest[index] = "partial-icon";
             setDataTest(listaDataTest)
+            setRespostas([...respostas,quase]);
+            setSeletorResposta([...seletorResposta,"partial-icon"])
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
             setHiddenAnswer(listaAnswer);
@@ -96,6 +104,8 @@ export default function Flashcards({ outrasTelas,dataTest,setDataTest,concluidos
             setIcon(listaIcon);
             listaDataTest[index] = "zap-icon";
             setDataTest(listaDataTest);
+            setRespostas([...respostas,certo]);
+            setSeletorResposta([...seletorResposta,"zap-icon"])
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
             setHiddenAnswer(listaAnswer);
@@ -111,6 +121,8 @@ export default function Flashcards({ outrasTelas,dataTest,setDataTest,concluidos
             let listaDataTest = [...dataTest];
             listaDataTest[index] = "zap-icon";
             setDataTest(listaDataTest)
+            setRespostas([...respostas,certo]);
+            setSeletorResposta([...seletorResposta,"zap-icon"])
             let listaAnswer = [...hiddenAnswer];
             listaAnswer = listaAnswer.splice(listaAnswer.indexOf(card.answer), 0);
             setHiddenAnswer(listaAnswer);
@@ -168,7 +180,7 @@ const ContainerFlashcards = styled.div`
     justify-content: center;
     flex-wrap: wrap;
     & div:last-child{
-        margin-bottom: 100px;
+        margin-bottom: 160px;
     }
 `
 

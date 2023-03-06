@@ -11,7 +11,7 @@ export default function TelaInicial({ logo, tela, setTela, setOutrasTelas }) {
         <ContainerTelaInicial tela={tela}>
             <img src={logo} alt="telaInicial"></img>
             <div>ZapRecall</div>
-            <button onClick={()=>iniciar()}>Iniciar Recall!</button>
+            <button data-test="start-btn" onClick={()=>iniciar()}>Iniciar Recall!</button>
         </ContainerTelaInicial>
     );
 }

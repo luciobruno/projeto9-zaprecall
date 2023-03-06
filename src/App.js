@@ -22,13 +22,16 @@ export default function App() {
   const [dataTest,setDataTest] = React.useState([]);
   const [tela,setTela] = React.useState("flex");
   const [outrasTelas,setOutrasTelas] = React.useState("none");
+  const [respostas, setRespostas] = React.useState([]);
+  const [textoFinal,setTextoFinal] = React.useState("");
+  const [seletorResposta,setSeletorResposta] = React.useState([]);
 
   return (
     <>
       <TelaInicial tela={tela} setTela={setTela} setOutrasTelas={setOutrasTelas} logo={logo}></TelaInicial>
       <Header outrasTelas={outrasTelas} logo={logo}></Header> 
-      <Flashcards outrasTelas={outrasTelas} dataTest={dataTest} setDataTest={setDataTest} concluidos={concluidos} removerAcao={removerAcao} setRemoverAcao={setRemoverAcao} certo={certo} erro={erro} quase={quase} color={color} setColor={setColor} icon={icon} setIcon={setIcon} hiddenAnswer={hiddenAnswer} setHiddenAnswer={setHiddenAnswer} seta={seta}  hiddenQuestion={hiddenQuestion} setHiddenQuestion={setHiddenQuestion} setConcluidos={setConcluidos} deck={deck} setDeck={setDeck}></Flashcards>
-      <Footer outrasTelas={outrasTelas} concluidos={concluidos} deck={deck}></Footer>
+      <Flashcards seletorResposta={seletorResposta} setSeletorResposta={setSeletorResposta} respostas={respostas} setRespostas={setRespostas} outrasTelas={outrasTelas} dataTest={dataTest} setDataTest={setDataTest} concluidos={concluidos} removerAcao={removerAcao} setRemoverAcao={setRemoverAcao} certo={certo} erro={erro} quase={quase} color={color} setColor={setColor} icon={icon} setIcon={setIcon} hiddenAnswer={hiddenAnswer} setHiddenAnswer={setHiddenAnswer} seta={seta}  hiddenQuestion={hiddenQuestion} setHiddenQuestion={setHiddenQuestion} setConcluidos={setConcluidos} deck={deck} setDeck={setDeck}></Flashcards>
+      <Footer seletorResposta={seletorResposta} erro={erro} textoFinal={textoFinal} setTextoFinal={setTextoFinal} respostas={respostas} outrasTelas={outrasTelas} concluidos={concluidos} deck={deck}></Footer>
     </>
   );
 }
